@@ -1,4 +1,5 @@
-# Raindrop.io Python API Client & Recently Bookmarked Script
+# Raindrop.io Python API Client
+(And Script to Download Your Recent Bookmarks)
 
 This project provides a simple Python wrapper for interacting with the Raindrop.io API. It allows you to manage your bookmarks, collections, and more through a set of convenient methods. Also included is a script that will download the most recent bookmarks and save it as a json file.
 
@@ -24,18 +25,22 @@ pip install requests json
 or
 python3 -m pip install requests json
 ```
-**recommended**or you can use the requirements.txt file to install them:
+**recommended** or you can use the requirements.txt file to install them:
 ```python
 python3 -m pip install -r requirements.txt
 ```
 It's also recommended to use a virtual environment to run this and any other python project but you already knew that.
 
 ### You will need either a raindrop.io access or testing token to use the API.
-To get your own access or testing token you need to login to your Raindrop.io account and go to [https://app.raindrop.io/settings/integrations](https://app.raindrop.io/settings/integrations) and create a new application under "For Developers." Fill that all out and make sure to save the client id and client secret. You won't need those for this library UNLESS you plan on integrating this into your own project that would let users access their own data. If you just want to fool around with your own bookmarks and collections then you can use the testing token. The main access token that you get with your client secret/id resets every two weeks requiring you to re-auth whereas the testing token does not.
+To get your own access or testing token you need to login to your Raindrop.io account and go to [https://app.raindrop.io/settings/integrations](https://app.raindrop.io/settings/integrations) and create a new application under "For Developers." 
+
+Fill that all out and make sure to save the client id and client secret. You won't need those for this library UNLESS you plan on integrating this into your own project that would let users access their own data. 
+
+If you just want to fool around with your own bookmarks and collections then you can use the testing token. The main access token that you get with your client secret/id resets every two weeks requiring you to re-auth whereas the testing token does not.
 
 To get the testing token go back to the integrations page, click on your application then click on "Generate Testing Token" and there you go. 
 
-You can get more instructions on how to integrate the API into your own project on their API page, it also includes information on how to turn your client id/client secret into an access token via OAuth2. Find that here: [https://developer.raindrop.io/](https://developer.raindrop.io/)
+You can get more instructions on how to integrate the API into your own project on their API page. It also includes information on how to turn your client id/client secret into an access token via OAuth2. Find that here: [https://developer.raindrop.io/](https://developer.raindrop.io/)
 
 ### The .env file
 Copy the example.env file to .env in your main directory.
@@ -59,8 +64,14 @@ python3 get_recent_raindrops.py -l 30
 ```
 
 ### Notes and rdl.ink/render images:
-The output of the get_recent_raindrops script parses out 90% of the usual data returned from the main API that I didn't need for my project (which was just listing the most recent items I had bookmarked) so I just kept creationdate, cover, title, link, tags and excerpt. You can modify the script to keep more or less information at your discretion. Just an fyi, there are a good number of bookmarks that use Raindrop.io's own web clipper for the image, those all start with the url: https://rdl.ink/render/ 
-They're all just a screenshot of the top half of the webpage saved as a 1200 X 800 .webp image. Some of the item fields from the API include additional tags that sometimes included images from the original source but that's not always the case. I have another script that reverts all the images to my own CDN but I didn't include it in this repo because it was out of scope. Once again, you've been warned.
+The output of the get_recent_raindrops script parses out 90% of the usual data returned from the main API that I didn't need for my project (which was just listing the most recent items I had bookmarked) so I just kept creationdate, cover, title, link, tags and excerpt. You can modify the script to keep more or less information at your discretion. 
+
+Just an fyi, there are a good number of bookmarks that use Raindrop.io's own web clipper for the image, those all start with the url: https://rdl.ink/render/ 
+They're all just a screenshot of the top half of the webpage saved as a 1200 X 800 .webp image. Some of the item fields from the API include additional tags that sometimes included images from the original source but that's not always the case. 
+
+I have another script that reverts all the images to my own CDN but I didn't include it in this repo because it was out of scope. 
+
+Once again, you've been warned.
 
 
 ## Contributing
